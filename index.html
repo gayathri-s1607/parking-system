@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Smart Parking System</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background: url('parking.jpg') no-repeat center center/cover;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        body::before {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.6);
+        }
+
+        .login-box {
+            position: relative;
+            z-index: 1;
+            width: 300px;
+            padding: 30px;
+            text-align: center;
+            border-radius: 15px;
+            background: linear-gradient(135deg, #ff4e50, #f9d423);
+            border: 2px solid white;
+            box-shadow: 0 0 20px white, 0 0 40px white;
+        }
+
+        .login-box h2 {
+            color: white;
+        }
+
+        .login-box button {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 8px;
+            background: black;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .login-box button:hover {
+            background: #333;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="login-box">
+    <h2>Smart Parking System</h2>
+    <button onclick="goToLogin()">Login</button>
+</div>
+
+<script>
+function goToLogin() {
+    window.location.href = "login.html";
+}
+</script>
+
+</body>
+</html>
