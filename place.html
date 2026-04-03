@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Select Location</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial;
+    background: url('image.jpg') no-repeat center center/cover;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+body::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.6);
+}
+
+h1 {
+    color: white;
+    margin-top: 30px;
+    z-index: 1;
+}
+
+.places {
+    display: grid;
+    grid-template-columns: repeat(2, 200px);
+    gap: 20px;
+    margin-top: 30px;
+    z-index: 1;
+}
+
+.place {
+    padding: 20px;
+    text-align: center;
+    border-radius: 15px;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    background: linear-gradient(135deg, #ff00cc, #3333ff);
+    box-shadow: 0 0 15px white;
+    transition: 0.3s;
+}
+
+.place:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 25px white, 0 0 50px white;
+}
+</style>
+</head>
+
+<body>
+
+<h1>🚗 Select Parking Location</h1>
+
+<div class="places">
+
+<div class="place" onclick="go('brookefields')">Brookefields Mall</div>
+<div class="place" onclick="go('funmall')">Fun Republic Mall</div>
+<div class="place" onclick="go('prozone')">Prozone Mall</div>
+<div class="place" onclick="go('railway')">Coimbatore Railway Station</div>
+<div class="place" onclick="go('busstand')">Gandhipuram Bus Stand</div>
+<div class="place" onclick="go('rspuram')">RS Puram</div>
+<div class="place" onclick="go('townhall')">Town Hall</div>
+<div class="place" onclick="go('airport')">Airport</div>
+<div class="place" onclick="go('temple')">Marudamalai Temple</div>
+<div class="place" onclick="go('park')">VOC Park</div>
+
+</div>
+
+<script>
+function go(place) {
+    localStorage.setItem("place", place);
+    window.location.href = "slots.html";
+}
+</script>
+
+</body>
+</html>
