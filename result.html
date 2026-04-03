@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Booking Result</title>
+
+<style>
+body {
+  margin:0;
+  font-family:Arial;
+  background: url('car.jpg') no-repeat center center/cover;
+  color:white;
+}
+
+.overlay {
+  background: rgba(0,0,0,0.7);
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+.box {
+  padding:40px;
+  border-radius:15px;
+  text-align:center;
+  background: rgba(0,0,0,0.8);
+  box-shadow:0 0 30px lime;
+}
+
+h2 {
+  color:lime;
+  text-shadow:0 0 10px lime;
+}
+</style>
+</head>
+
+<body>
+
+<div class="overlay">
+
+<div class="box">
+
+<h2>🚗 Slot is Allotted Successfully!</h2>
+
+<p id="details"></p>
+
+</div>
+
+</div>
+
+<script>
+
+// ✅ get stored values
+let name = localStorage.getItem("username");
+let vehicle = localStorage.getItem("vehicle");
+let slot = localStorage.getItem("slot");
+
+// ✅ show correct slot (1–10)
+document.getElementById("details").innerHTML =
+  "User: " + name + "<br><br>" +
+  "Vehicle: " + vehicle + "<br><br>" +
+  "Allocated Slot: " + slot;
+
+</script>
+
+</body>
+</html>
