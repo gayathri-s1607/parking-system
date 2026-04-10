@@ -1,13 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Confirm Booking</title>
+
+<style>
+body {
+  margin:0;
+  font-family:Arial;
+  background: url('parking.jpg') no-repeat center center/cover;
+  color:white;
+}
+
+/* overlay */
+.overlay {
+  background: rgba(0,0,0,0.7);
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+/* form box */
+.box {
+  padding:30px;
+  border-radius:15px;
+  text-align:center;
+  background: rgba(0,0,0,0.8);
+  box-shadow:0 0 25px cyan;
+}
+
+/* inputs */
+input {
+  padding:10px;
+  margin:10px;
+  width:220px;
+  border:none;
+  outline:none;
+  border-radius:5px;
+}
+
+/* button */
+button {
+  padding:10px 20px;
+  background: linear-gradient(45deg, #ff00cc, #00ffff);
+  border:none;
+  color:white;
+  font-weight:bold;
+  cursor:pointer;
+  box-shadow:0 0 15px cyan;
+}
+
+button:hover {
+  transform:scale(1.05);
+}
+</style>
+</head>
+
+<body>
+
+<div class="overlay">
+
+<div class="box">
+
+<h2>Confirm Your Booking</h2>
+
+<p id="slotInfo"></p>
+
+<input id="user" placeholder="Username"><br>
+<input id="pass" type="password" placeholder="Password"><br>
+<input id="vehicle" placeholder="Vehicle Number"><br>
+
+<button onclick="submit()">Confirm</button>
+
+</div>
+
+</div>
+
 <script>
 
+// show selected slot
 let slot = localStorage.getItem("slot");
-let place = localStorage.getItem("place");
-
-document.getElementById("slotInfo").innerText =
-  "Selected Slot: " + (parseInt(slot)+1);
+document.getElementById("slotInfo").innerText = "Selected Slot: " + slot;
 
 function submit(){
-
   let u = document.getElementById("user").value;
   let v = document.getElementById("vehicle").value;
 
@@ -16,19 +91,14 @@ function submit(){
     return;
   }
 
-  // Get saved data
-  let data = JSON.parse(localStorage.getItem("parkingData"));
-
-  // Mark slot as booked
-  data[place][slot] = 1;
-
-  // Save again
-  localStorage.setItem("parkingData", JSON.stringify(data));
-
-  // Save user details
+  // store data
   localStorage.setItem("username", u);
   localStorage.setItem("vehicle", v);
 
+  // go to result page
   window.location = "result.html";
 }
 </script>
+
+</body>
+</html>
