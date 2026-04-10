@@ -1,10 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Parking Slots</title>
+
+<style>
+body {
+  margin:0;
+  font-family:Arial;
+  background: url('photo.jpg') no-repeat center center/cover;
+  color:white;
+}
+
+.overlay {
+  background: rgba(0,0,0,0.7);
+  min-height:100vh;
+  text-align:center;
+  padding-top:20px;
+}
+
+.container {
+  display:flex;
+  justify-content:space-between;
+  margin:50px;
+}
+
+.column {
+  display:flex;
+  flex-direction:column;
+}
+
+.slot {
+  width:140px;
+  height:70px;
+  margin:15px;
+  border-radius:10px;
+  box-shadow:0 0 15px cyan;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+.free {
+  background:white;
+}
+
+.booked {
+  background:lightgrey;
+  cursor:not-allowed;
+  box-shadow:0 0 10px red;
+}
+
+.free:hover {
+  transform:scale(1.05);
+  box-shadow:0 0 25px cyan;
+}
+</style>
+</head>
+
+<body>
+
+<div class="overlay">
+
+<h2 id="title">Parking Slots</h2>
+
+<div class="container">
+  <div class="column" id="left"></div>
+  <div class="column" id="right"></div>
+</div>
+
+</div>
+
 <script>
 
 // Get place
 let place = localStorage.getItem("place") || "brookefields";
 
-// Initial slot data
-let defaultData = {
+// Slot data for 10 places
+let data = {
   brookefields: [0,1,0,0,1,0,1,0,0,1],
   funmall:      [1,0,1,0,0,1,0,0,1,0],
   prozone:      [0,0,1,0,1,0,1,0,0,0],
@@ -17,12 +88,9 @@ let defaultData = {
   park:         [0,0,1,0,0,1,0,0,1,0]
 };
 
-// Get saved data OR use default
-let data = JSON.parse(localStorage.getItem("parkingData")) || defaultData;
-
 let slots = data[place];
 
-// Title
+// Show title
 document.getElementById("title").innerText =
   place.toUpperCase() + " - Parking Slots";
 
@@ -34,7 +102,7 @@ slots.forEach((s,i)=>{
 
   if(s==0){
     div.onclick = ()=>{
-      localStorage.setItem("slot", i);
+      localStorage.setItem("slot", i+1);
       window.location = "confirm.html";
     }
   }
@@ -48,3 +116,6 @@ slots.forEach((s,i)=>{
 });
 
 </script>
+
+</body>
+</html>
